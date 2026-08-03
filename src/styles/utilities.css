@@ -1,0 +1,100 @@
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  padding-block: var(--space-section);
+  position: relative;
+}
+
+.section-sm {
+  padding-block: var(--space-section-sm);
+}
+
+.section-head {
+  max-width: 42rem;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head__title {
+  margin-top: 0.75rem;
+}
+
+.section-head p + p {
+  margin-top: 1.25rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.cluster {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.glow-text {
+  text-shadow:
+    0 0 10px var(--glow),
+    0 0 25px var(--glow),
+    0 0 40px var(--glow);
+}
+
+.glow-ring {
+  box-shadow: var(--shadow-glow);
+}
+
+.icon {
+  color: var(--primary);
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.3));
+  flex-shrink: 0;
+}
+
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+/* Word-by-word heading reveal (see components/wordReveal.js): each word
+   sits in its own overflow-hidden mask so it can slide up from below.
+   Padding/negative-margin trick keeps descenders (g, p, q) from clipping
+   against the mask while it's at rest. */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+}
+
+.word-mask__inner {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    will-change: auto;
+  }
+}

@@ -1,0 +1,107 @@
+/* Shared media-frame system: real <img> with a graceful gradient/initials
+   fallback for any slot that has no photo yet (see components/placeholderMedia.js) */
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-frame__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0, 229, 255, 0.16), transparent 55%),
+    linear-gradient(150deg, #0d0d0d, #050505);
+}
+
+.media-frame__fallback span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);
+  color: var(--primary);
+  text-shadow: 0 0 20px var(--glow);
+}
+
+/* Unifying treatment applied to every real people-photo so different source
+   backgrounds (studio grey vs. skyline blue) read as one consistent system. */
+.photo-frame img {
+  /* Source portraits are tall (~2:3); bias the crop toward the top so
+     headroom/background gets cut before faces do. */
+  object-position: 50% 12%;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+}
+
+/* Light chip for raw company logos (see §4d of the plan). Fixed footprint
+   regardless of each source file's own aspect ratio (landscape wordmarks vs.
+   square icon-plus-wordmark lockups) so the whole wall reads as one
+   consistent system instead of some logos looking tiny at random. */
+.logo-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 140px;
+  height: 64px;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  background: #f4f2ee;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+}
+
+.logo-chip img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-chip:hover,
+.logo-chip:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.5), 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+
+.logo-chip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  background: #000;
+  color: var(--text);
+  font-size: 0.75rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+}
+
+.logo-chip:hover::after,
+.logo-chip:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

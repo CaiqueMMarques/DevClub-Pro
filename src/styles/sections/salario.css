@@ -1,0 +1,43 @@
+.salario__chart {
+  width: 100%;
+  height: auto;
+}
+
+.salario-grid line {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.salario-grid text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--text-muted);
+}
+
+.salario-bar__rect {
+  rx: 6;
+}
+
+.salario-bar__ceiling {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  fill: var(--primary-light);
+}
+
+.salario-bar__level {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  fill: var(--text);
+}
+
+.salario-bar__range {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--text-secondary);
+}
+
+.salario__footnote {
+  margin-top: 1.5rem;
+  max-width: 60ch;
+}

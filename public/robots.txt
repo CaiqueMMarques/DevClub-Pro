@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /matricule-se.html
+
+# Replace with the real production domain before deploy.
+Sitemap: https://example.com/sitemap.xml

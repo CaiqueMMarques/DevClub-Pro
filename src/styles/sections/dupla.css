@@ -1,0 +1,33 @@
+.dupla {
+  background: var(--background-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.dupla__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+  align-items: center;
+}
+
+.dupla__photo {
+  /* Source photo is portrait (~2:3); a wide landscape crop would cut heads off. */
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-card);
+}
+
+.dupla__title {
+  max-width: 16ch;
+}
+
+.dupla__text {
+  margin-top: 1.25rem;
+  max-width: 46ch;
+}
+
+@media (max-width: 860px) {
+  .dupla__layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,67 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-spring),
+    background-color 0.4s var(--ease-spring),
+    border-color 0.4s var(--ease-spring);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn--primary {
+  background: var(--gradient-button);
+  color: #000;
+}
+
+.btn--primary:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn--secondary {
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn--secondary:hover {
+  background: rgba(0, 229, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Ripple: a radial highlight that expands from the pointer position on click */
+.btn__ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--rx, 50%) var(--ry, 50%), rgba(255, 255, 255, 0.35), transparent 60%);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.btn.is-rippling .btn__ripple {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+.btn--secondary .btn__ripple {
+  background: radial-gradient(circle at var(--rx, 50%) var(--ry, 50%), rgba(0, 229, 255, 0.28), transparent 60%);
+}

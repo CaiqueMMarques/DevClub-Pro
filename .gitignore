@@ -1,0 +1,9 @@
+node_modules
+dist
+.DS_Store
+*.log
+
+# Original source files the user dropped in for reference/processing —
+# the finished, mapped copies live under public/images/.
+assets/
+folder/

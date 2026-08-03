@@ -1,0 +1,97 @@
+.testimonial-marquee {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.5rem;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.testimonial-marquee__strip {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: testimonial-marquee-scroll var(--testimonial-marquee-duration, 45s) linear infinite;
+}
+
+.testimonial-marquee:hover .testimonial-marquee__strip,
+.testimonial-marquee:focus-within .testimonial-marquee__strip {
+  animation-play-state: paused;
+}
+
+.testimonial-marquee__track {
+  display: flex;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  padding-inline: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+}
+
+@keyframes testimonial-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.testimonial-marquee .testimonial {
+  flex: 0 0 auto;
+  width: min(400px, 85vw);
+}
+
+.testimonial {
+  min-height: 280px;
+  cursor: default;
+}
+
+.testimonial:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.testimonial__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.testimonial__avatar .media-frame__fallback span {
+  font-size: 1.1rem;
+}
+
+.testimonial__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.testimonial__body .eyebrow {
+  margin-bottom: 0.4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-marquee {
+    overflow-x: auto;
+  }
+
+  .testimonial-marquee__strip {
+    animation: none;
+  }
+
+  /* Only the loop needs a duplicate copy; without motion, showing it would
+     just look like the same 6 testimonials repeating in a static list. */
+  .testimonial-marquee__track[aria-hidden='true'] {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonial__body {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

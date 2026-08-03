@@ -1,0 +1,53 @@
+.matricule {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.matricule::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 45%, rgba(0, 229, 255, 0.14), transparent 70%);
+  pointer-events: none;
+}
+
+.matricule__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 8rem;
+}
+
+.matricule__line {
+  position: absolute;
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.5rem);
+  color: var(--text);
+  opacity: 0;
+}
+
+.matricule__line.is-glow {
+  color: var(--primary);
+  text-shadow: 0 0 20px var(--glow), 0 0 45px var(--glow);
+}
+
+.matricule__back {
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.matricule__back.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}

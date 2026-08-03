@@ -1,0 +1,109 @@
+.rodolfo__layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: clamp(2.5rem, 2rem + 3vw, 5rem);
+  align-items: center;
+}
+
+.flip-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  perspective: 1400px;
+  border-radius: var(--radius-card);
+  isolation: isolate;
+}
+
+/* Pointer-following sheen: reinforces the "reflexo/profundidade" the brief asks for */
+.flip-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: 2;
+  border-radius: inherit;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(102, 245, 255, 0.16), transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.flip-card:hover::before,
+.flip-card:focus-visible::before {
+  opacity: 1;
+}
+
+.flip-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.flip-card__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  box-shadow: var(--shadow-glow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card__face--front {
+  background: radial-gradient(circle at 50% 30%, rgba(0, 229, 255, 0.1), transparent 60%), var(--card);
+}
+
+.flip-card__logo {
+  width: 74%;
+  filter: drop-shadow(0 0 24px rgba(0, 229, 255, 0.5));
+}
+
+.flip-card__face--back {
+  transform: rotateY(180deg);
+  background: var(--card);
+  padding: 0;
+}
+
+.flip-card__photo {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
+.flip-card__info {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  padding: 1.5rem;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.82) 20%, transparent 100%);
+  text-align: left;
+}
+
+.flip-card__info .eyebrow {
+  margin-top: 0.35rem;
+}
+
+.rodolfo__bio {
+  max-width: 52ch;
+}
+
+@media (max-width: 860px) {
+  .rodolfo__layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .flip-card {
+    max-width: 340px;
+  }
+
+  .rodolfo__bio {
+    text-align: center;
+  }
+}

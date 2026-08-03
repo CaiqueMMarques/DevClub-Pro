@@ -1,0 +1,48 @@
+.cta-final {
+  position: relative;
+  overflow: clip;
+  text-align: center;
+}
+
+.cta-final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 40%, rgba(0, 229, 255, 0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-final__inner {
+  position: relative;
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.cta-final__title {
+  max-width: 20ch;
+  margin-inline: auto;
+}
+
+.cta-final__text {
+  margin-top: 1.25rem;
+}
+
+.cta-final__points {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.cta-final__points li {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+}
+
+.cta-final__actions {
+  margin-top: 2.5rem;
+}

@@ -1,0 +1,58 @@
+:root {
+  /* Backgrounds */
+  --background: #000000;
+  --background-secondary: #080808;
+  --background-hover: #101010;
+
+  /* Cards */
+  --card: #0a0a0a;
+  --card-hover: #121212;
+
+  /* Brand */
+  --primary: #00e5ff;
+  --primary-light: #66f5ff;
+  --primary-dark: #00c8ff;
+  --accent: #66f5ff;
+
+  /* Text */
+  --text: #ffffff;
+  --text-secondary: #bdbdbd;
+  --text-muted: #7a7a7a;
+
+  /* Structure */
+  --border: #1b1b1b;
+  --glow: rgba(0, 229, 255, 0.45);
+
+  --shadow-glow:
+    0 0 10px rgba(0, 229, 255, 0.25),
+    0 0 25px rgba(0, 229, 255, 0.18),
+    0 0 50px rgba(0, 229, 255, 0.12);
+
+  --gradient-primary: linear-gradient(135deg, #00e5ff 0%, #00c8ff 45%, #00b8ff 100%);
+  --gradient-button: linear-gradient(90deg, #00e5ff, #00bfff);
+
+  /* Typography */
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', sans-serif;
+  --font-body: 'Inter Variable', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Spacing rhythm (generous, per motion/visual design guidance) */
+  --space-section: clamp(5rem, 4rem + 4vw, 9rem);
+  --space-section-sm: clamp(3rem, 2.5rem + 2vw, 5rem);
+  --container-width: 1280px;
+  --container-padding: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+
+  /* Radii (locked scale: soft everywhere, pill for interactive) */
+  --radius-card: 18px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+
+  /* Motion easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Z-index scale (systemic layers only) */
+  --z-nav: 100;
+  --z-modal: 200;
+  --z-grain: 300;
+}

@@ -1,0 +1,14 @@
+@import './main.css';
+
+@import './sections/hero.css';
+@import './sections/sobre.css';
+@import './sections/rodolfo-card.css';
+@import './sections/fernanda.css';
+@import './sections/dupla.css';
+@import './sections/formacoes.css';
+@import './sections/numeros.css';
+@import './sections/empregabilidade.css';
+@import './sections/salario.css';
+@import './sections/empresas.css';
+@import './sections/depoimentos.css';
+@import './sections/cta-final.css';

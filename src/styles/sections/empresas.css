@@ -1,0 +1,61 @@
+.empresas__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.marquee {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.marquee__strip {
+  display: flex;
+  flex-direction: column;
+  animation: marquee-up var(--marquee-duration, 22s) linear infinite;
+}
+
+.marquee[data-direction='down'] .marquee__strip {
+  animation-name: marquee-down;
+}
+
+.marquee:hover .marquee__strip,
+.marquee:focus-within .marquee__strip {
+  animation-play-state: paused;
+}
+
+.marquee__track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-block: 0.625rem;
+}
+
+@keyframes marquee-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes marquee-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
+@media (max-width: 860px) {
+  .empresas__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .marquee {
+    height: 340px;
+  }
+}
+
+@media (max-width: 560px) {
+  .empresas__grid {
+    grid-template-columns: 1fr;
+  }
+}
